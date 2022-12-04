@@ -1,0 +1,267 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.header{
+    text-align: center;
+}
+.header_title{
+    font-size: 2rem;
+}
+
+.header_sub_title{
+    font-size: 1.7rem;
+}
+
+/* work space*/
+
+.disable{
+    display: none;
+}
+
+.enable{
+    display: block;
+}
+
+.work_space{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    padding-top: 10%;
+}
+
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+ .btn{
+    padding: 1% 4%;
+    font-size: 1.3rem;
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
+    outline: none;
+    display: block;
+    margin:10% auto 0;
+    transition: all .3s linear;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+}
+
+.btn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
+
+.select_quiz{
+    margin: 5% 0;
+    width: 100%;
+}
+
+
+
+.select_options, .select_options option{
+    font-size: .9rem;
+    outline: none;
+    padding: 1%;
+}
+
+
+/* input data*/
+
+.input_data{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding: 2% 5%;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.input_data_title, ._title{
+    font-size: 1.7rem;
+    text-align: center;
+    position: relative;
+}
+
+.input_data_title:after{
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: black;
+    width: 20%;
+    height: 2px;
+    left: 40%;
+}
+
+.input_data_groups{
+    margin:4% auto;
+    max-width: 80%;
+}
+
+.input_data_groups input{
+    display: block;
+    width: 100%;
+    margin: 2% 0;
+    font-size: 1.2rem;
+    outline: none;
+    padding: 1% 2%;
+    transition: all .3s linear;
+}
+
+.input_data_groups input:focus{
+    border: 1px solid black;
+}
+
+.continue_btn{
+    font-weight: 500;
+}
+
+
+/* question's frames*/
+
+.qframes{
+    height: 100vh;
+    width: 100vw;
+    
+    top: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.qframes .container{
+    border: 1px solid black;
+    margin: 2% auto;
+    left: 20%;
+    right: 20%;
+    padding: 1%;
+    background-color: white;
+    display: block;
+    width: 50%;
+
+}
+
+/*progress bar*/
+.progressbar{
+    width: 70%;
+    margin: 2% auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.progress_step{
+    display: block;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 40px;
+    height: 2px;
+}
+
+.progress_step_active{
+    background-color: black;
+}
+
+
+.quiz_frame{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.quiz_frame_title{
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.quiz_option_bank{
+    display: flex;
+    justify-content: space-between;
+}
+.answer_option input{
+    accent-color: black;
+}
+
+.answer_place{
+    display: block;
+    width: 90%;
+    min-height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px 5px;
+    margin: 2% 0 ;
+    z-index: 1000;
+    font-size: .8rem;
+}
+
+.answer_place:hover{
+    border: 1px dotted blueviolet;
+}
+
+
+.light_margin{
+    margin-left: 5%;
+}
+._write_answer input{
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1% 2%;
+}
+
+.answer_card{
+    display: block;
+    font-size: .8rem;
+    border: 1px solid black;
+    margin: 4% 0;
+    padding: 1%;
+}
+
+.answer_card_dropped{
+    border: none;
+}
+
+.answer_card_hovered{
+    background-color: rgba(31, 48, 67, 0.2);
+}
+
+.question_and_code{
+    display: flex;
+    justify-content: space-between;
+}
+.code_place{
+    font-size: .9rem;
+}
+
+    /*quiz_nav_btn*/
+    .quiz_nav_btn{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .prev_btn, .next_btn{
+        font-size: 1.1rem;
+        letter-spacing: .2rem;
+        margin-top: 2%;
+    }
+
+    .hidden{
+        visibility: hidden;
+    }
+
+
+    .disable_btn{
+        opacity: .4;
+    }

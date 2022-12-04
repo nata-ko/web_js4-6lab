@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS LAB4 - 6</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header_title">TR-11, Natalie Bratchkova</h1>
+        <h2 class="header_sub_title">Create test for students. <br>Theme: "The JS' base. Objects' prototype"</h2>
+    </header>
+
+    <section class="start_btn_space">
+        <div class="container">
+            <button class="start_test_btn btn" id="start_test_btn">Start</button>
+        </div>
+    </section>
+    <!--  disable-->
+    <div class="work_space disable">
+        <div class="container ">
+            <div class="input_data">
+                <div class="input_data_title">Input your data</div>
+                <div class="input_data_groups">
+                    <input type="text" name="name" placeholder="Name" required id="name">
+                    <input type="email" name="group" id="group" placeholder="Group" required >
+                    <input type="email" name="email" id="email" placeholder="Email" required >
+                </div>
+    
+                <button class="btn continue_btn" >Continue</button>
+            </div>
+        </div>
+    </div>
+    <!-- questions frames   disable -->
+    <section class="qframes disable">
+        <div class="container">
+            <div class="quiz_title _title">Test</div>
+            <div class="progressbar">
+                <div class="progress_step progress_step_active"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+                <div class="progress_step"></div>
+            </div>
+            <!-- QUIZ FRAME-->
+            <div class="quiz_frame" id="questions">
+                
+            </div>
+             <!-- buttons-->
+             <div class="quiz_nav_btn quiz_frame">
+                
+                <button class="btn next_btn" id="next_btn" disabled>
+                    <span class="next_btn_text">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+ 
+
+     <!-- plug in smptjs for send smth through email-->
+     <script src=" https://smtpjs.com/v3/smtp.js"></script>
+
+     <!-- чтобы отправить по телеге-->
+     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+    <script src="db.js"></script>
+    <script src="click_action.js"></script>
+    <script src="change_action.js"></script>
+</body>
+</html>
