@@ -1,8 +1,6 @@
 let checkboxIndex = 0;
 // check all changes that happen inside our qframes element
-qframes.addEventListener('change', (event) => {
-
-       
+qframes.addEventListener('change', (event) => {  
     if(event.target.classList.contains('answer')){
         // if we work with radio 
         if(event.target.type == "radio"){
@@ -54,7 +52,7 @@ qframes.addEventListener('change', (event) => {
                     score += selectScore;
                     selectScore = 0;
                 }
-                
+              
                 // set rating for our user
                 user.userRating = score;   
 })
