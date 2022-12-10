@@ -755,13 +755,35 @@ const DATA = [
 
      document.querySelector('.quiz_nav_btn').innerHTML = `
      <button class="btn next_btn" id="next_btn" disabled>
-        <span class="next_btn_text">Send Rezults</span>
+        <span class="next_btn_text send_rez">Send Rezults</span>
     </button>`;
 
 
      //message that will be sent on telegram
      message += `\n${user.name.value}'s test's score: ${user.userRating}/${DATA.length}\n`;
-     console.log(message); 
+     console.log(message);
+
+     document.querySelector('.send_rez').addEventListener('click', ()=>{
+        document.querySelector('.quiz_nav_btn').innerHTML = `
+        <button class="btn next_btn" id="next_btn">
+           <span class="next_btn_text exit">Exit</span>
+       </button>`;
+
+       document.querySelector('.exit').addEventListener('click', ()=>{
+        document.querySelector('.qframes').classList.remove('enable');
+        document.querySelector('.quiz_nav_btn').innerHTML = `
+            <button class="btn next_btn viewZero" id="next_btn" disabled>
+                <span class="next_btn_text viewZero">Next</span>
+            </button>`;
+        
+     })
+       
+     })  
+     
+
+     
+    
+
  }
  
  // constantces
