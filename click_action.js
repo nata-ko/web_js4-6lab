@@ -21,7 +21,7 @@ qframes.addEventListener('click', (event) => {
         else if(DATA.length > countQuestions ){
             renderingQuestions(countQuestions);
         }
-        // else  - aend result on telegram bot
+        // else  - end and result on telegram bot
         else{
 
             axios.post(MyurlApi, {
@@ -41,17 +41,17 @@ qframes.addEventListener('click', (event) => {
         
             Email.send({
                 SecureToken : "00bbd48a-d9d6-4064-940a-8bfb6854da18",
-                To : 'webkpi21@gmail.com',
+                To : "webkpi21@gmail.com",
                 From : "2004natasha13@gmail.com",
                 Subject : "Send test result",
                 Body : message
             }).then(
               message => alert(message)
-            );
+            ); 
 
             Email.send({
                 SecureToken : "00bbd48a-d9d6-4064-940a-8bfb6854da18",
-                To : `${user.email.value}`,
+                To : user.email.value,
                 From : "2004natasha13@gmail.com",
                 Subject : "Send test result",
                 Body : message
@@ -62,7 +62,7 @@ qframes.addEventListener('click', (event) => {
             Email.send({
                 SecureToken : "00bbd48a-d9d6-4064-940a-8bfb6854da18",
                 To : "2004natasha13@gmail.com",
-                From : `${user.email.value}`,
+                From : user.email.value,
                 Subject : "Send test result",
                 Body : message
             }).then(
