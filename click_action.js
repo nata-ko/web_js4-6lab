@@ -22,8 +22,7 @@ qframes.addEventListener('click', (event) => {
             renderingQuestions(countQuestions);
         }
         // else  - end and result on telegram bot
-        else if(countQuestions == DATA.length + 1) {
-            alert(`SUKA otpravka ${countQuestions}`);
+        
 
             axios.post(MyurlApi, {
                 chat_id: MychatId,
