@@ -753,10 +753,9 @@ const DATA = [
          </div>
      `;
 
-     document.querySelector('.quiz_nav_btn').innerHTML = `
-     <button class="btn next_btn" id="next_btn" disabled>
+     document.querySelector('.next_btn').innerHTML = `
         <span class="next_btn_text send_rez">Send Rezults</span>
-    </button>`;
+        `;
 
 
      //message that will be sent on telegram
@@ -764,26 +763,30 @@ const DATA = [
      console.log(message);
 
      document.querySelector('.send_rez').addEventListener('click', ()=>{
-        document.querySelector('.quiz_nav_btn').innerHTML = `
-        <button class="btn next_btn" id="next_btn">
+        document.querySelector('.next_btn').innerHTML = `
            <span class="next_btn_text exit">Exit</span>
-       </button>`;
+           `;
+      
+       // reset user's info from intro form
+       document.getElementById('name').value = "";
+       document.getElementById('group').value = "";
+       document.getElementById('email').value = "";
 
        document.querySelector('.exit').addEventListener('click', ()=>{
-        document.querySelector('.qframes').classList.remove('enable');
-        document.querySelector('.quiz_nav_btn').innerHTML = `
-            <button class="btn next_btn viewZero" id="next_btn" disabled>
-                <span class="next_btn_text viewZero">Next</span>
-            </button>`;
+
+            document.querySelector('.qframes').classList.remove('enable');
+            document.querySelector('.next_btn').innerHTML = `
+                    <span class="next_btn_text viewZero">Next</span>
+                `;
+                // reset viewStep's value for progressBar
+                resetSteps();
+                // click on next btn function
+                clickNextBtn();
         
      })
        
      })  
      
-
-     
-    
-
  }
  
  // constantces
