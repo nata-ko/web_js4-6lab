@@ -48,6 +48,9 @@ continueBtn.addEventListener('click', () =>{
     if(user.name.value == '' || user.email.value ==''){
         alert('Name`s or email`s field is empty!\nCheck and fill');
     }
+    else if(!user.email.value.includes('@gmail.com') ){
+        alert("Write your real email, please");
+    }
     else{
         workSpace.classList.remove('enable');
         workSpace.classList.add('disable');
@@ -80,30 +83,34 @@ const quizFrames = document.querySelectorAll('.quiz_frame_js');
 let viewedStep = 0;
 
 
-
-
-nextBtn.firstElementChild.addEventListener('click', () =>{
-    if(nextBtn.classList.contains('viewZero')){
-        viewedStep = 0;
-        nextBtn.classList.remove('viewZero');
-    }
-    else{
+function clickNextBtn(){
+    nextBtn.firstElementChild.addEventListener('click', () =>{
         viewedStep++;
         console.log(`viewedStep = ${viewedStep}`);
         increaseSteps();
-        
-        switch  (viewedStep){
-            case 9:
-                nextBtn.innerHTML = `<span class="next_btn_text">See results</span>`;
-                viewedStep++;
-                break;
-        }
+    
+
+    if(viewedStep == 9){
+        nextBtn.innerHTML = `<span class="next_btn_text">See results</span>`; 
     }
     
         
 })
+}
+clickNextBtn();
+
+
 
 function increaseSteps(){
     progressStep[viewedStep].classList.add('progress_step_active');
     progressStep[viewedStep - 1].classList.remove('progress_step_active');
 }
+
+function resetSteps(){
+    progressStep[viewedStep].classList.remove('progress_step_active');
+    viewedStep = 0;
+    progressStep[viewedStep].classList.add('progress_step_active');
+}
+
+
+
