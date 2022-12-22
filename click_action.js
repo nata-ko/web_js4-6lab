@@ -22,7 +22,7 @@ qframes.addEventListener('click', (event) => {
             renderingQuestions(countQuestions);
         }
         // else  - end and result on telegram bot
-        
+        else if(countQuestions == DATA.length + 1) {
 
             axios.post(MyurlApi, {
                 chat_id: MychatId,
@@ -37,7 +37,7 @@ qframes.addEventListener('click', (event) => {
             });
 
             // email
-            // add teacher's data 
+            //add teacher's data 
         
             Email.send({
                 SecureToken : "00bbd48a-d9d6-4064-940a-8bfb6854da18",
@@ -228,5 +228,3 @@ qframes.addEventListener('click', (event) => {
     })
 
 })
-
-
