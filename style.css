@@ -1,13 +1,18 @@
+:root{
+    --main-color:black;
+}
 body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    color:var(--main-color);
 }
 a{
     text-decoration: none;
-    color: black;
+    color: var(--main-color);
 }
 
 .header{
@@ -49,9 +54,9 @@ a{
  .btn{
     padding: 1% 4%;
     font-size: 1.3rem;
-    border: 1px solid black;
+    border: 1px solid var(--main-color);
     background-color: transparent;
-    color: black;
+    color: var(--main-color);
     outline: none;
     display: block;
     margin:10% auto 0;
@@ -64,7 +69,7 @@ a{
 .btn:hover{
     cursor: pointer;
     color: white;
-    background-color: black;
+    background-color: var(--main-color);
 }
 
 .select_quiz{
@@ -88,7 +93,7 @@ a{
     display: block;
     margin: 0 auto;
     padding: 2% 5%;
-    border: 1px solid black;
+    border: 1px solid var(--main-color);
     background-color: white;
 }
 
@@ -102,7 +107,7 @@ a{
     position: absolute;
     display: block;
     content: "";
-    background-color: black;
+    background-color: var(--main-color);
     width: 20%;
     height: 2px;
     left: 40%;
@@ -124,7 +129,7 @@ a{
 }
 
 .input_data_groups input:focus{
-    border: 1px solid black;
+    border: 1px solid var(--main-color);
 }
 
 .continue_btn{
@@ -144,7 +149,7 @@ a{
 }
 
 .qframes .container{
-    border: 1px solid black;
+    border: 1px solid var(--main-color);
     margin: 2% auto;
     left: 20%;
     right: 20%;
@@ -174,7 +179,7 @@ a{
 }
 
 .progress_step_active{
-    background-color: black;
+    background-color: var(--main-color);
 }
 
 
@@ -193,7 +198,7 @@ a{
     justify-content: space-between;
 }
 .answer_option input{
-    accent-color: black;
+    accent-color:var(--main-color);
 }
 
 .answer_place{
@@ -224,7 +229,7 @@ a{
 .answer_card{
     display: block;
     font-size: .8rem;
-    border: 1px solid black;
+    border: 1px solid var(--main-color);
     margin: 4% 0;
     padding: 1%;
 }
