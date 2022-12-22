@@ -76,13 +76,14 @@ const DATA = [
         //third
      {
          question:{
-             name:'3) Як розмістити 3 блока таким чином, щоб вони стояли в ряд, а не колонку, і відстань між ними була однакова?(using flexbox)?',
+             name:'3) Як змінити колір тексту всієї сторінки на #9D00FF (:root)?',
              type:'text_input'
          },
  
          answers:[
              {
-                 answer:'.block_wrapper{display:flex; justify-content: space-between};',
+                 answer:':root{--main-color:#9D00FF;}',
+                 placeholder:"selector{property:value;}",
                  isCorrect: true,
                  answerId:31
              },
@@ -92,24 +93,23 @@ const DATA = [
          taskId:3,
          code:{
              hasCode: true,
-             code:` &lt;div class = "block_wrapper" &gt;<br>
-             <div class="light_margin">&lt;div class = "block"&gt;&lt;/div&gt;<br></div>
-             <div class="light_margin">&lt;div class = "block"&gt;&lt;/div&gt;<br></div>
-             <div class="light_margin">&lt;div class = "block"&gt;&lt;/div&gt;<br></div>
-             &lt; /div&gt;<br>`
+             code:` :root{
+                --main-color:black;
+            }`
          }
          
      },
  //fourth
      {
          question:{
-             name:'4) Знайти та виправити помилку',
+             name:'4) Як змінити колір всієї сторінки на чорний?',
              type:'text_input'
          },
  
          answers:[
              {
-                 answer:'<div class = "block2"></div>',
+                 answer:'body{background-color:black;}',
+                 placeholder:"selector{property:value;}",
                  isCorrect: true,
                  answerId:41
              }
@@ -119,25 +119,32 @@ const DATA = [
          taskId:4,
          code:{
              hasCode: true,
-             code:`&lt;div class = "block_wrapper" &gt;<br>
-             <div class="light_margin">&lt;div class = "block1"&gt;&lt;/div&gt;<br></div>
-             <div class="light_margin">&lt;div class = "block2"&gt;&lt;div&gt;<br></div>
-             <div class="light_margin">&lt;div class = "block3"&gt;&lt;/div&gt;<br></div>
-             &lt; /div&gt;<br>`
+             code:`&lt;!DOCTYPE html&gt;<br>
+             &lthtml lang="en"&gt<br>
+             &lthead&gt<br>
+             &ltmeta charset="UTF-8"&gt<br>
+             &ltmeta http-equiv="X-UA-Compatible" content="IE=edge"&gt<br>
+             &ltmeta name="viewport" content="width=device-width, initial-scale=1.0"&gt<br>
+             &ltlink rel="stylesheet" href="style.css"&gt<br>
+             &lttitle&gtJS LAB4 - 6 &lt/title&gt<br>
+             &lt/head&gt<br>
+             &ltbody&gt<br>
+             &lt/body&gt`
          }
          
      },
  //fifth
      {
          question:{
-             name:'<br>5) Як вивести в консоль національність(nationality) об`єкту japaNatka?',
+             name:'<br>5) У вас є наступна структура на сторінці. Як змінити бордери, щоб вони були в 3 рази товстіші та не суцільною лінією?',
              type:'text_input'
          },
  
          answers:[
              {
-                 answer:'console.log(japaNatka.nationality);',
+                 answer:'.qframes .container{border: 3px dashed var(--main-color);}',
                  isCorrect: true,
+                 placeholder:"selector{property: value;}",
                  answerId:51
              }
              
@@ -146,7 +153,13 @@ const DATA = [
          taskId:5,
          code:{
              hasCode: true,
-             code:'function Person(name, age, nationality){...}<br>let japaNatka = new Person(`Natalie`, `18`, `Ukrainian`);'
+             code:`HTML<br>
+             &lt;div class="container"&gt;....&lt;/div&gt;<br>
+             <br>
+             CSS<br>
+             .qframes .container{<br>
+                border: 1px solid var(--main-color);<br>
+             }`
          }
          
      }, 
@@ -596,7 +609,7 @@ const DATA = [
              return DATA[index].answers.map((answer) =>{
                  return`
                      <div class="answer_option _write_answer">
-                         <input type="text" name="answer_option${answer.answerId}" id="${answer.answerId}" placeholder=".class{color:white; text-decoration:none;}" class = "input_text answer"  class = "answer" >
+                         <input type="text" name="answer_option${answer.answerId}" id="${answer.answerId}" placeholder="${answer.placeholder}" class = "input_text answer"  class = "answer" >
                      </div>
                  `
              }).join('');
@@ -772,6 +785,16 @@ const DATA = [
        document.getElementById('group').value = "";
        document.getElementById('email').value = "";
 
+       //for(let key in checkAnswerInput){
+        document.querySelector('body').setAttribute("style", "background:blue;");
+       //}
+
+       for(let key in checkAnswerInput){
+        var tempValue = checkAnswerInput[key].value.split(':');
+        document.querySelector(`${checkAnswerInput[key].property}`).style.setProperty(`${tempValue[0]}`, `${tempValue[1].replace(';', '')}`);
+       
+       }
+
        document.querySelector('.exit').addEventListener('click', ()=>{
 
             document.querySelector('.qframes').classList.remove('enable');
@@ -823,6 +846,20 @@ const DATA = [
      };
  }
  
+
+
+
+
+ // --
+ // create objest where you can save user's answer that was inputed
+ class InputedAnswers{
+    constructor(property, value){
+        this.property = property;
+        this.value = value;
+    }
+ }
+ var checkAnswerInput = [];
+
  // funcion for checking answers on text input type questions
  const checkAnswerInputText= (index) =>{
         // for saving correct answer
@@ -833,8 +870,17 @@ const DATA = [
              correctAnswer = answer.answer;
          }
      });
+     var stringArr = userAnswers[index].answer.split('{');
+     console.log(stringArr);
+
+
+     var userInput = new InputedAnswers(stringArr[0], stringArr[1].replace('}', ' '));
+    checkAnswerInput[index - 2] = userInput;
+
+    console.log(checkAnswerInput);
      // compare user's answer and correct
        if(userAnswers[index].answer == correctAnswer){
+        
         // increase score
          score++;
          console.log("your answer is correct");
@@ -845,6 +891,16 @@ const DATA = [
        
      }
  }
+
+
+
+
+
+
+
+
+
+
  // function for checking user's answer for checkbox type questions
  const checkAnswerCheckbox = (index) =>{
     // for counting how many answers user chose
@@ -875,3 +931,4 @@ const DATA = [
    
  // variable for counting user's score
  let score = 0;
+
