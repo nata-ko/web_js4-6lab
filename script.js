@@ -30,10 +30,7 @@ const Mytoken = "5867671015:AAHhqYiSFYgqL_ZwW7HFY5_5o8kQoYlGe4g";
 const MychatId = "-1001501574039";
 const MyurlApi = `https://api.telegram.org/bot${Mytoken}/sendMessage`;
 
-
-
 //teacher data
-    
     const chat_id = "-519873227";
     const bot_token ="1858844290:AAG4xVcUFcD6nNnKqz1biKvcGrhwNCsOHMk";
     const techer_urlApi =  `https://api.telegram.org/bot${bot_token}/sendMessage`
@@ -91,7 +88,8 @@ function clickNextBtn(){
     if(viewedStep == 9){
         nextBtn.innerHTML = `<span class="next_btn_text">See results</span>`; 
     }
-            
+    
+        
 })
 }
 clickNextBtn();
@@ -106,11 +104,6 @@ function resetSteps(){
     viewedStep = 0;
     progressStep[viewedStep].classList.add('progress_step_active');
 }
-
-
-
-
-
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -129,8 +122,8 @@ var Student = {
     group: "TR-11",
 
     // method for adding data
-    addData(addProperty, addData){
-        Object.assign(this, { [addProperty]: addData})
+    addData(addProperty, addValue){
+        Object.assign(this, { [addProperty]: addValue})
     },
 
     // method for changing data
@@ -170,11 +163,14 @@ console.log("\n\nStudent's coppy\n");
 for(var key in StudentObject1){
     console.log(`${key} - ${StudentObject1[key]}\n`);
 }
-Student.prototype = Object.create(Student);
+
 
 console.log("\n\n\n\tAdd to student's prototype function for showing his data");
+
+
 // Додати в прототип об’єкту «Студент» метод «Показати дані»
- Student.prototype.showData = function(){
+Student.prototype = Object.create(Student)
+ Student.showData = function(){
     for(var key in Student){
         console.log(`Student's ${key} is ${this[key]}\n`);
     }
@@ -187,11 +183,11 @@ console.log("\n\n\n\tAdd to student's prototype function for showing his data");
 var Success = {};
 Success = Object.create(Student);
 
-Success.prototype.test = "test";
-Success.prototype.attempt = 10;
-Success.prototype.points = [1,2,3,4,5,6,7,8,9,10];
+Success.test = "test";
+Success.attempt = 10;
+Success.points = [1,2,3,4,5,6,7,8,9,10];
 
-Success.prototype.countAveragePoint = function(){
+Success.countAveragePoint = function(){
     count = 0;
     for(var i = 0; i < this.points.length; i++){
         count += this.points[i];
@@ -200,64 +196,99 @@ Success.prototype.countAveragePoint = function(){
     return count;
 }
 
-Success.prototype.showData = function(){
-    for(var key in Success.prototype){
+Success.showData = function(){
+    for(var key in Success){
         console.log(`Success's ${key} is ${this[key]}\n`);
     }
 }
-Success.prototype.showData();
+console.log("\n\nSuccess object".toUpperCase());
+Success.showData();
 
 
 //Реалізувати класи «Студент» і «Успішність» з такими же методами і властивостями як і попередні об’єкти. «Успішність» наслідує
 // методи та властивості від «Студент». При реалізації використовувати геттери і сеттери, наприклад, для перевірки даних чи виведення в різних
 //виглядах інформацію
 
-class Student1{
-    constructor(speciality, group){
+
+// how to add and delete element to class
+class StudentClass{
+     
+    constructor(speciality, group, elem){
         this.speciality = speciality;
         this.group = group;
+        this.elem = elem;
     }
-    get group(){
-        return this._Group;
-    }
-    set group(value){
-        if(value.includes([0-9])){
-            console.log("set correct group's name");
-        }
-        else{
-            this._Group = value;
-        }
-    }
-
+    
     // method for adding data
-    addData(addData){
-        this.addData = addData;
+    addData(property, value){
+         this.elem[property] = value;
     }
 
     // method for changing data
-    changeData(propertyName, propertyValue){
-        this[propertyName] = propertyValue
+    changeData(property, value){
+        this[property] = value;
+        for(var item in this.elem){
+            if(item == property){
+                this.elem[property] = value;
+            }
+        }
     }
 
     // method for deleting data
-    deleteData(propertyName){
-        this[propertyName] = null;
+    deleteData(property){
+        for(var item in this){
+            if(item == property){
+                this[item] = null;
+                item = null;
+            }
+        }
+        for(var item in this.elem){
+            if(item == property){
+                this.elem[item] = null;
+                item = null;
+            }
+        }
+    }
+    
+
+    PrintData(){
+
+    console.log(`\n\tSpeciality - ${this.speciality}\n\tGroup - ${this.group}\n\t `);
+    this.PrintElem()
+           
     }
 
-    showData(){
-        
-        console.log(`Class Student\n\tSpeciality - ${this.speciality}\n\tGroup - ${this._Group}`);
-        
+    PrintElem(){
+        console.log('elements');
+        for (let i in this.elem){ {
+            console.log(i + " --> " + this.elem[i]);
+            
+        }
     }
 }
-var studentNata = new Student1("Computer Science", "TR-11");
+}
+
+
+
+var studentNata = new StudentClass("Computer Science", "TR-11",{"nationality":  "Ukrainian"});
 console.log("\n\n\nWORK WITH CLASS\n");
-studentNata.showData();
+studentNata.PrintData();
+console.log('ADDED GRADUATED SCHOOL');
+studentNata.addData( 'school','specialised school 1');
+studentNata.PrintData()
+console.log("CHANGED NATIONALITY AND ADDED NAME AND LANGUAGE");
+studentNata.changeData("nationality",  "Japanese")
+studentNata.addData('Name', 'Nata Lee');
+studentNata.addData('Lang', 'Korean');
+studentNata.PrintData();
+console.log("DELETE LANGUAGE");
+studentNata.deleteData('Lang');
+studentNata.PrintData();
 
 
 
 // success class 
-class Success1 extends Student1{
+class Success1 extends StudentClass{
         test = "test";
         attempt = "attempts";
         
@@ -278,7 +309,6 @@ class Success1 extends Student1{
     }
 
     showData(){
-        
         var arrayStr = '';
         this._points.forEach(element => {
             arrayStr += element + ' ';
@@ -288,6 +318,6 @@ class Success1 extends Student1{
 }
 
 var suc = new Success1("Computer Science", "TR-11", [1,2,3,4,5,6,7]);
-console.log(`Average point - ${suc.counrAveragePoint()}`);
 suc.showData();
+console.log(`Average point - ${suc.counrAveragePoint()}`);
 
